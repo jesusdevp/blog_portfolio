@@ -13,29 +13,18 @@ class App extends Component {
     const respuesta = await axios.get(
       " https://jsonplaceholder.typicode.com/users"
     );
-    console.log("respuesta: ", respuesta);
+
     this.setState({
-      usuarios: [
-        {
-          nombre: "Jesus",
-          correo: "jesusdevelp@gmail.com",
-          enlace: "jesusdevp.com"
-        },
-        {
-          nombre: "Ainat",
-          correo: "ainat97@gmail.com",
-          enlace: "ainat97.com"
-        }
-      ]
+      usuarios: respuesta.data
     });
   }
 
   ponerFIlas = () =>
     this.state.usuarios.map(usuario => (
-      <tr>
-        <td>{usuario.nombre}</td>
-        <td>{usuario.correo}</td>
-        <td>{usuario.enlace}</td>
+      <tr key={usuario.id}>
+        <td>{usuario.name}</td>
+        <td>{usuario.email}</td>
+        <td>{usuario.website}</td>
       </tr>
     ));
 
