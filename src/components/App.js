@@ -8,8 +8,10 @@ const Tareas = () => <div>Tareas</div>;
 const App = props => (
   <BrowserRouter>
     <Menu />
-    <Route exact path="/" component={Usuarios} />
-    <Route exact path="/Tareas" component={Tareas} />
+    <div className="margen">
+      <Route exact path="/" component={Usuarios} />
+      <Route exact path="/Tareas" component={Tareas} />
+    </div>
   </BrowserRouter>
 );
 
