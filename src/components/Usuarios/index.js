@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import { connect } from "react-redux";
+import Spinner from "../General/Spinner";
 
 import * as usuariosActions from "../../actions/usuariosActions";
 
@@ -8,6 +9,24 @@ class Usuarios extends Component {
   componentDidMount() {
     this.props.traerTodos();
   }
+
+  ponerContenido = () => {
+    if (this.props.cargando) {
+      return <Spinner />;
+    }
+    return (
+      <table className="table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Enlace</th>
+          </tr>
+        </thead>
+        <tbody>{this.ponerFIlas()}</tbody>
+      </table>
+    );
+  };
 
   ponerFIlas = () =>
     this.props.usuarios.map(usuario => (
@@ -19,20 +38,7 @@ class Usuarios extends Component {
     ));
 
   render() {
-    return (
-      <div className="margen">
-        <table className="table">
-          <thead>
-            <tr>
-              <th>Nombre</th>
-              <th>Correo</th>
-              <th>Enlace</th>
-            </tr>
-          </thead>
-          <tbody>{this.ponerFIlas()}</tbody>
-        </table>
-      </div>
-    );
+    return <div className="margen">{this.ponerContenido()}</div>;
   }
 }
 
