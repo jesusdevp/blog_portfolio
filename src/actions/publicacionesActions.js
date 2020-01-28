@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  TRAER_POR_USUARIO,
-  CARGANDO,
-  ERROR
-} from "../types/publicacionesTypes";
+import { ACTUALIZAR, CARGANDO, ERROR } from "../types/publicacionesTypes";
 import * as usuariosTypes from "../types/usuariosTypes";
 
 const { TRAER_TODOS: USUARIOS_TRAER_TODOS } = usuariosTypes;
@@ -17,7 +13,7 @@ export const traerTodos = () => async dispatch => {
       "http://jsonplaceholder.typicode.com/posts"
     );
     dispatch({
-      type: TRAER_POR_USUARIO,
+      type: ACTUALIZAR,
       payload: respuesta.data
     });
   } catch (error) {
@@ -52,7 +48,7 @@ export const traerPorUsuario = key => async (dispatch, getState) => {
     const publicaciones_actualizadas = [...publicaciones, nuevas];
 
     dispatch({
-      type: TRAER_POR_USUARIO,
+      type: ACTUALIZAR,
       payload: publicaciones_actualizadas
     });
 
@@ -76,6 +72,21 @@ export const traerPorUsuario = key => async (dispatch, getState) => {
   }
 };
 
-export const abrirCerrar = (pub_key, com_key) => dispatch => {
-  console.log(pub_key, com_key);
+export const abrirCerrar = (pub_key, com_key) => (dispatch, getState) => {
+  const { publicaciones } = getState().publicacionesReducer;
+  const seleccionada = publicaciones[pub_key][com_key];
+
+  const actualizada = {
+    ...seleccionada,
+    abierto: !seleccionada.abierto
+  };
+
+  const publicaciones_actualizadas = [...publicaciones];
+  publicaciones_actualizadas[pub_key] = [...publicaciones[pub_key]];
+  publicaciones_actualizadas[pub_key][com_key] = actualizada;
+
+  dispatch({
+    type: ACTUALIZAR,
+    payload: publicaciones_actualizadas
+  });
 };
