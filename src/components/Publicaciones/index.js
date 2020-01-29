@@ -107,7 +107,9 @@ class Publicaciones extends Component {
 
   mostrarComentarios = (pub_key, com_key, Comentarios) => {
     this.props.abrirCerrar(pub_key, com_key);
-    this.props.traerComentarios(pub_key, com_key);
+    if (!comentarios.length) {
+      this.props.traerComentarios(pub_key, com_key);
+    }
   };
 
   render() {
