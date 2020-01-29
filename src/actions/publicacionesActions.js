@@ -3,6 +3,7 @@ import {
   ACTUALIZAR,
   CARGANDO,
   ERROR,
+  COM_ACTUALIZAR,
   COM_CARGANDO,
   COM_ERROR
 } from "../types/publicacionesTypes";
@@ -122,7 +123,7 @@ export const traerComentarios = (pub_key, com_key) => async (
     publicaciones_actualizadas[pub_key][com_key] = actualizada;
 
     dispatch({
-      type: ACTUALIZAR,
+      type: COM_ACTUALIZAR,
       payload: publicaciones_actualizadas
     });
   } catch (error) {
