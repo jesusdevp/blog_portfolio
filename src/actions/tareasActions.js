@@ -33,3 +33,17 @@ export const traerTodas = () => async dispatch => {
     });
   }
 };
+
+export const cambioUsuarioId = usuario_id => dispatch => {
+  dispatch({
+    type: "cambio_usuario_id",
+    payload: usuario_id
+  });
+};
+
+export const cambioTitulo = titulo => dispatch => {
+  dispatch({
+    type: "cambio_titulo",
+    payload: titulo
+  });
+};
