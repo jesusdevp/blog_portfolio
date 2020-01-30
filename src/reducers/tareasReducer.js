@@ -25,6 +25,9 @@ export default (state = INITIAL_STATE, action) => {
     case "cambio_titulo":
       return { ...state, titulo: action.payload };
 
+    case "agregada":
+      return { ...state, tareas: {}, cargando: false, error: "" };
+
     default:
       return state;
   }
