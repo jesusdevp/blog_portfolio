@@ -3,4 +3,5 @@ export const CARGANDO = "tareas_cargando";
 export const ERROR = "tareas_error";
 export const CAMBIO_USUARIO_ID = "tareas_cambio_usuario_id";
 export const CAMBIO_TITULO = "tareas_cambio_agregada";
-export const AGREGADA = "tarea_agregada";
+export const GUARDAR = "tareas_guardar";
+export const ACTUALIZAR = "tareas_actualizar";
