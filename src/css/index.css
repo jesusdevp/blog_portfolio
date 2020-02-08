@@ -21,6 +21,7 @@
 #menu a {
   color: white;
   padding-right: 50px;
+  text-decoration: none;
 }
 
 .contenedor_tareas {
@@ -42,7 +43,9 @@ body {
 }
 
 .pub_titulo {
-  border-top: 1px solid black;
+  border-radius: 20px;
+  border: 1px solid black;
+  margin: 15px;
   cursor: pointer;
 }
 
